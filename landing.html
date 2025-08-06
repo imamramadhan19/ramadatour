@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramada Tour - Perjalanan Haji dan Umroh Terpercaya</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        :root {
+            --primary-gold: #ddb92a;
+            --primary-burgundy: #4b181f;
+            --white: #ffffff;
+            --light-gray: #f8f8f8;
+            --dark-gray: #333;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(75, 24, 31, 0.95);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-gold);
+        }
+        
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(75, 24, 31, 0.6), rgba(221, 185, 42, 0.3)), 
+                        url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            line-height: 1.8;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: var(--primary-gold);
+            color: var(--primary-burgundy);
+        }
+        
+        .btn-primary:hover {
+            background: #f0c935;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(221, 185, 42, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-burgundy);
+            transform: translateY(-2px);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: var(--light-gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-burgundy);
+            margin-bottom: 20px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-gold), #f0c935);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: var(--primary-burgundy);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-burgundy);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+        
+        /* Packages Section */
+        .packages {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .package-card {
+            border: 2px solid var(--light-gray);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .package-card:hover {
+            border-color: var(--primary-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(221, 185, 42, 0.2);
+        }
+        
+        .package-header {
+            background: linear-gradient(135deg, var(--primary-burgundy), #6b2530);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .package-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-gold);
+        }
+        
+        .package-body {
+            padding: 30px;
+        }
+        
+        .package-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .package-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .package-features i {
+            color: var(--primary-gold);
+            margin-right: 10px;
+        }
+        
+        /* Partners Section */
+        .partners {
+            padding: 80px 0;
+            background: var(--light-gray);
+        }
+        
+        .partners-slider {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .partners-track {
+            display: flex;
+            animation: slidePartners 20s linear infinite;
+        }
+        
+        .partner-logo {
+            flex: 0 0 200px;
+            height: 100px;
+            background: var(--white);
+            margin: 0 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-weight: bold;
+            color: var(--primary-burgundy);
+        }
+        
+        @keyframes slidePartners {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+        
+       /* Testimonials */
+       .testimonials {
+            padding: 100px 0;
+            background: #4b181f;
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-rating {
+            color: #ddb92a;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: #ddb92a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #4b181f;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, white, white);
+        }
+
+        .contact-content {
+            text-align: center;
+            color: #4b181f;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+        
+        /* WhatsApp Widget */
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .whatsapp-btn {
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            animation: bounce 2s infinite;
+        }
+        
+         /* Footer */
+         footer {
+            background: #4b181f;
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: #ddb92a;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #ddb92a;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #666;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .partner-logo {
+                flex: 0 0 150px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <img src="https://ramadatour.id/wp-content/uploads/2024/12/pav-icon.png" alt="Ramada Tour Logo">
+                Ramada Tour
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#paket">Paket</a></li>
+                <li><a href="#features">Layanan</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Wujudkan Impian Haji & Umroh Anda</h1>
+            <p>Bergabunglah dengan ribuan jamaah yang telah merasakan perjalanan spiritual terbaik bersama Ramada Tour. Paket terlengkap, pelayanan terpercaya, dan pengalaman tak terlupakan menanti Anda.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya ingin bertanya tentang paket Haji dan Umroh" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i> Konsultasi Gratis
+                </a>
+                <a href="#paket" class="btn btn-secondary">
+                    <i class="fas fa-eye"></i> Lihat Paket
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Mengapa Memilih Ramada Travel Haji?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="feature-title">Berpengalaman 15+ Tahun</h3>
+                    <p>Telah melayani ribuan jamaah dengan pengalaman yang tidak terlupakan</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">Muthawif Bersertifikat</h3>
+                    <p>Pembimbing yang ahli dan berpengalaman dalam memberikan bimbingan ibadah</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3 class="feature-title">Akomodasi Terbaik</h3>
+                    <p>Hotel berbintang dengan lokasi strategis dekat dengan Masjidil Haram dan Nabawi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="paket" class="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Paket Haji & Umroh 2025-2026</h2>
+                <p>Pilih paket yang sesuai dengan kebutuhan dan budget Anda</p>
+            </div>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Paket Umroh Ekonomis</h3>
+                        <div class="package-price">Rp 18.5jt</div>
+                    </div>
+                    <div class="package-body">
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> Tiket PP Jakarta - Jeddah</li>
+                            <li><i class="fas fa-check"></i> Hotel bintang 3 (Madinah & Makkah)</li>
+                            <li><i class="fas fa-check"></i> Transportasi bus AC</li>
+                            <li><i class="fas fa-check"></i> Makan 3x sehari</li>
+                            <li><i class="fas fa-check"></i> Pembimbing ibadah</li>
+                            <li><i class="fas fa-check"></i> Manasik & city tour</li>
+                        </ul>
+                        <a href="https://wa.me/6281212121211?text=Saya tertarik dengan Paket Umroh Ekonomis" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Paket Umroh Premium</h3>
+                        <div class="package-price">Rp 28.5jt</div>
+                    </div>
+                    <div class="package-body">
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> Tiket PP Jakarta - Jeddah</li>
+                            <li><i class="fas fa-check"></i> Hotel bintang 5 (Madinah & Makkah)</li>
+                            <li><i class="fas fa-check"></i> Transportasi bus VIP</li>
+                            <li><i class="fas fa-check"></i> Makan buffet 3x sehari</li>
+                            <li><i class="fas fa-check"></i> Pembimbing ibadah expert</li>
+                            <li><i class="fas fa-check"></i> Ziarah lengkap</li>
+                        </ul>
+                        <a href="https://wa.me/6281212121211?text=Saya tertarik dengan Paket Umroh Premium" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Paket Haji Reguler</h3>
+                        <div class="package-price">Rp 65jt</div>
+                    </div>
+                    <div class="package-body">
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> Porsi haji reguler</li>
+                            <li><i class="fas fa-check"></i> Pemberangkatan 2025</li>
+                            <li><i class="fas fa-check"></i> Akomodasi sesuai standar</li>
+                            <li><i class="fas fa-check"></i> Pembimbing ibadah</li>
+                            <li><i class="fas fa-check"></i> Handling lengkap</li>
+                            <li><i class="fas fa-check"></i> Perlengkapan haji</li>
+                        </ul>
+                        <a href="https://wa.me/6281212121211?text=Saya tertarik dengan Paket Haji Reguler" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <div class="section-title">
+                <h2>Partner Kami</h2>
+                <p>Bekerjasama dengan partner terpercaya untuk memberikan pelayanan terbaik</p>
+            </div>
+            <div class="partners-slider">
+                <div class="partners-track">
+                    <div class="partner-logo">Saudi Airlines</div>
+                    <div class="partner-logo">Garuda Indonesia</div>
+                    <div class="partner-logo">Lion Air</div>
+                    <div class="partner-logo">Bank Mandiri</div>
+                    <div class="partner-logo">Bank BRI</div>
+                    <div class="partner-logo">Bank BCA</div>
+                    <div class="partner-logo">Hilton Hotels</div>
+                    <div class="partner-logo">Marriott</div>
+                    <div class="partner-logo">Hyatt Hotels</div>
+                    <div class="partner-logo">Saudi Airlines</div>
+                    <div class="partner-logo">Garuda Indonesia</div>
+                    <div class="partner-logo">Lion Air</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Testimonials Section -->
+     <section class="testimonials" id="testimoni">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Testimoni Jamaah</h2>
+                <p style="color: #ccc;">Apa kata jamaah yang telah merasakan pelayanan terbaik dari Ramada Tour</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Alhamdulillah, perjalanan umroh dengan Ramada Tour sangat memuaskan. Guide nya ramah dan berpengalaman, hotel dekat dengan Masjidil Haram. Terima kasih Ramada Tour!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AH</div>
+                        <div>
+                            <strong>Ahmad Hidayat</strong><br>
+                            <small>Jakarta, 2024</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Subhanallah, impian saya untuk beribadah haji akhirnya terwujud. Pelayanan Ramada Tour sangat profesional, dari awal hingga akhir semuanya terorganisir dengan baik."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div>
+                            <strong>Siti Maryam</strong><br>
+                            <small>Surabaya, 2024</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Paket VIP yang saya ambil benar-benar worth it. Hotel mewah, makanan enak, dan pelayanan yang sangat memuaskan. Recommended banget!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">BR</div>
+                        <div>
+                            <strong>Budi Rahman</strong><br>
+                            <small>Bandung, 2024</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="kontak">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Siap Berangkat Haji & Umroh?</h2>
+                <p>Hubungi kami sekarang untuk konsultasi gratis dan dapatkan penawaran terbaik!</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>+62 812-1212-1211</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@ramadatour.id</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Jakarta, Indonesia</span>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/6281212121211?text=Assalamu'alaikum, saya ingin konsultasi tentang paket haji dan umroh dari Ramada Tour" class="btn btn-primary" style="background: #4b181f; color: white; font-size: 20px; padding: 20px 40px;">
+                    <i class="fab fa-whatsapp"></i> Konsultasi Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ramada Tour</h3>
+                    <p>Melayani perjalanan haji dan umroh dengan sepenuh hati sejak 2010. Terpercaya dan berpengalaman dalam mengantarkan jamaah menuju Baitullah.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Layanan Kami</h3>
+                    <a href="#">Paket Umroh Reguler</a>
+                    <a href="#">Paket Umroh VIP</a>
+                    <a href="#">Paket Haji Reguler</a>
+                    <a href="#">Paket Haji Plus</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <p><i class="fab fa-whatsapp"></i> +62 812-1212-1211</p>
+                    <p><i class="fas fa-envelope"></i> info@ramadatour.id</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ramada Tour. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Widget -->
+    <div class="whatsapp-widget">
+        <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya ingin bertanya tentang paket Haji dan Umroh" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(75, 24, 31, 0.98)';
+            } else {
+                header.style.background = 'rgba(75, 24, 31, 0.95)';
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenu.addEventListener('click', function() {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
