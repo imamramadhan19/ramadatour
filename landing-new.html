@@ -150,7 +150,7 @@
             margin-bottom: 1rem;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
             animation: fadeInUp 1s ease-out;
-            color: #ddb92a;
+            color: white;
             font-weight: 900;
             letter-spacing: -0.5px;
         }
@@ -287,78 +287,560 @@
             font-size: 1.3rem;
         }
 
-         /* Packages Section */
-         .packages {
-            padding: 80px 0;
-            background: var(--white);
+        /* Enhanced Packages Section - 4 Grid Layout */
+        .packages {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .packages::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="0.5" fill="%23ddb92a" opacity="0.1"/><circle cx="80" cy="40" r="0.3" fill="%234b181f" opacity="0.1"/><circle cx="40" cy="80" r="0.4" fill="%23ddb92a" opacity="0.08"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .packages .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .packages .section-title h2 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #4b181f, #722832);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(75, 24, 31, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .packages .section-title p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 3rem;
+        }
+
         .packages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
-        
+
         .package-card {
-            border: 2px solid var(--light-gray);
-            border-radius: 15px;
+            background: white;
+            border-radius: 25px;
             overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            cursor: pointer;
+            transform-origin: center;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(221, 185, 42, 0.03), rgba(75, 24, 31, 0.03));
+            border-radius: 25px;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .package-card:hover::before {
+            opacity: 1;
+        }
+
+        .package-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(221, 185, 42, 0.15);
+        }
+
+        .package-image-container {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+            background: linear-gradient(135deg, #4b181f, #722832);
+        }
+
+        .package-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .package-card:hover .package-image {
+            transform: scale(1.1);
+        }
+
+        .package-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(75, 24, 31, 0.8) 0%,
+                rgba(75, 24, 31, 0.4) 40%,
+                rgba(221, 185, 42, 0.3) 80%,
+                rgba(221, 185, 42, 0.6) 100%
+            );
+            z-index: 1;
             transition: all 0.3s ease;
         }
-        
-        .package-card:hover {
-            border-color: var(--primary-gold);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(221, 185, 42, 0.2);
+
+        .package-card:hover .package-image::before {
+            background: linear-gradient(
+                135deg,
+                rgba(75, 24, 31, 0.6) 0%,
+                rgba(75, 24, 31, 0.2) 40%,
+                rgba(221, 185, 42, 0.2) 80%,
+                rgba(221, 185, 42, 0.4) 100%
+            );
         }
-        
-        .package-header {
-            background: #6b2530;
-            color: #FFFFFF;
-            padding: 30px;
-            text-align: center;
-        }
-        
-        .package-header h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        
-        .package-price {
-            font-size: 2.5rem;
+
+        .package-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: bold;
-            color: var(--primary-gold);
+            z-index: 3;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: pulse 2s infinite;
         }
-        
-        .package-body {
-            padding: 30px;
+
+        .package-badge.promo {
+            background: linear-gradient(135deg, #28a745, #20c997);
         }
-        
-        .package-features {
-            list-style: none;
-            margin-bottom: 30px;
+
+        .package-badge.bestseller {
+            background: linear-gradient(135deg, #fd7e14, #e63946);
         }
-        
-        .package-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
+
+        .package-badge.limited {
+            background: linear-gradient(135deg, #6f42c1, #e83e8c);
+        }
+
+        .package-badge.vip {
+            background: linear-gradient(135deg, #212529, #495057);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .package-price-tag {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #ddb92a, #f4d03f);
+            color: #4b181f;
+            padding: 12px 18px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            z-index: 3;
+            box-shadow: 0 6px 20px rgba(221, 185, 42, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .package-content {
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .package-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #4b181f;
+            margin-bottom: 15px;
+            line-height: 1.3;
+            min-height: 50px;
             display: flex;
             align-items: center;
+            justify-content: center;
         }
-        
-        .package-features li:last-child {
-            border-bottom: none;
+
+        .package-subtitle {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            opacity: 0.8;
         }
-        
-        .package-features i {
-            color: var(--primary-gold);
-            margin-right: 10px;
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        .package-features li {
+            padding: 4px 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .package-features li::before {
+            content: '✓';
+            color: #28a745;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .package-btn {
+            background: linear-gradient(135deg, #25d366, #20c05a);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+            width: 100%;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .package-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            background: linear-gradient(135deg, #20c05a, #1ea952);
+        }
+
+        .package-btn i {
+            font-size: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="gallery-pattern" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.4" fill="%23ddb92a" opacity="0.08"/><circle cx="75" cy="75" r="0.3" fill="%234b181f" opacity="0.06"/></pattern></defs><rect width="100" height="100" fill="url(%23gallery-pattern)"/></svg>');
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .gallery .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery .section-title h2 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #4b181f, #722832);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(75, 24, 31, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .gallery .section-title p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(75, 24, 31, 0.3) 0%,
+                rgba(75, 24, 31, 0.1) 50%,
+                rgba(221, 185, 42, 0.2) 100%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(221, 185, 42, 0.2);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 30px 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 3;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #ddb92a;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .gallery-zoom-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(221, 185, 42, 0.9);
+            color: #4b181f;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            z-index: 3;
+            backdrop-filter: blur(10px);
+        }
+
+        .gallery-item:hover .gallery-zoom-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Image Zoom Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 85%;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 15px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { 
+                opacity: 0;
+                transform: translateY(-50%) scale(0.8);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(-50%) scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(221, 185, 42, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-close:hover {
+            background: rgba(221, 185, 42, 0.4);
+            transform: scale(1.1);
+            color: #ddb92a;
+        }
+
+        .modal-info {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            right: 0;
+            color: white;
+            text-align: center;
+        }
+
+        .modal-info h4 {
+            font-size: 1.5rem;
+            color: #ddb92a;
+            margin-bottom: 5px;
+        }
+
+        .modal-info p {
+            opacity: 0.8;
+        }
+
+        /* Gallery Responsive */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .gallery .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                max-height: 80%;
+            }
+
+            .modal-close {
+                top: -40px;
+                width: 40px;
+                height: 40px;
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .gallery-overlay {
+                padding: 20px 15px 15px;
+            }
+
+            .gallery-overlay h4 {
+                font-size: 1rem;
+            }
+
+            .gallery-overlay p {
+                font-size: 0.8rem;
+            }
         }
 
         /* Partners Section */
         .partners {
             padding: 80px 0;
-            background: var(--light-gray);
+            background: #f8f9fa;
         }
         
         .partners-slider {
@@ -374,7 +856,7 @@
         .partner-logo {
             flex: 0 0 200px;
             height: 100px;
-            background: var(--white);
+            background: white;
             margin: 0 20px;
             border-radius: 10px;
             display: flex;
@@ -382,7 +864,15 @@
             justify-content: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             font-weight: bold;
-            color: var(--primary-burgundy);
+            color: #4b181f;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partner-logo img {
+            max-width: 80%;
+            max-height: 60px;
+            object-fit: contain;
         }
         
         @keyframes slidePartners {
@@ -483,8 +973,8 @@
             flex-wrap: wrap;
         }
 
-       /* WhatsApp Widget */
-       .whatsapp-widget {
+        /* WhatsApp Widget */
+        .whatsapp-widget {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -561,6 +1051,13 @@
         }
 
         /* Mobile Responsive */
+        @media (max-width: 1200px) {
+            .packages-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -588,6 +1085,20 @@
                 grid-template-columns: 1fr;
             }
 
+            .packages-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .package-image-container {
+                height: 200px;
+            }
+
+            .package-title {
+                font-size: 1.2rem;
+                min-height: auto;
+            }
+
             .testimonials-grid {
                 grid-template-columns: 1fr;
             }
@@ -595,6 +1106,25 @@
             .contact-buttons {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .packages .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .package-content {
+                padding: 20px 15px;
+            }
+
+            .package-features {
+                font-size: 0.8rem;
+            }
+
+            .package-btn {
+                font-size: 0.8rem;
+                padding: 10px 15px;
             }
         }
     </style>
@@ -691,80 +1221,200 @@
         </div>
     </section>
 
-    <!-- Packages Section -->
+    <!-- Enhanced Packages Section - 4 Grid Layout -->
     <section id="paket" class="packages">
         <div class="container">
             <div class="section-title">
-                <h2>Paket Haji & Umroh 2025-2026</h2>
-                <p>Pilih paket yang sesuai dengan kebutuhan dan budget Anda</p>
+                <h2>Paket Umroh & Haji 2025</h2>
+                <p>Pilih paket perjalanan spiritual terbaik dengan harga terjangkau dan fasilitas premium</p>
             </div>
             <div class="packages-grid">
                 <div class="package-card">
-                    <div class="package-header">
-                        <h3>Paket Umroh Ekonomis</h3>
-                        <div class="package-price">Rp 18.5jt</div>
+                    <div class="package-image-container">
+                        <div class="package-image" style="background-image: url('https://images.unsplash.com/photo-1564769662533-4f00a87b4056?q=80&w=1000&auto=format&fit=crop');" onclick="openImageModal(this)">
+                        </div>
+                        <div class="package-badge promo">PROMO</div>
+                        <div class="package-price-tag">Rp 24,9 Jt</div>
                     </div>
-                    <div class="package-body">
-                        <ul class="package-features">
-                            <li><i class="fas fa-check"></i> Tiket PP Jakarta - Jeddah</li>
-                            <li><i class="fas fa-check"></i> Hotel bintang 3 (Madinah & Makkah)</li>
-                            <li><i class="fas fa-check"></i> Transportasi bus AC</li>
-                            <li><i class="fas fa-check"></i> Makan 3x sehari</li>
-                            <li><i class="fas fa-check"></i> Pembimbing ibadah</li>
-                            <li><i class="fas fa-check"></i> Manasik & city tour</li>
-                        </ul>
-                        <a href="https://wa.me/6281212121211?text=Saya tertarik dengan Paket Umroh Ekonomis" class="btn-primary" style="width: 100%; justify-content: center;">
-                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    <div class="package-content">
+                        <h3 class="package-title">Umroh Promo Ekonomis</h3>
+                        <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya tertarik dengan Paket Umroh Promo Ekonomis Rp 24,9 Jt. Mohon info lengkapnya" class="package-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            Chat Umroh Promo
                         </a>
                     </div>
                 </div>
                 
                 <div class="package-card">
-                    <div class="package-header">
-                        <h3>Paket Haji Reguler</h3>
-                        <div class="package-price">Rp 65jt</div>
+                    <div class="package-image-container">
+                        <div class="package-image" style="background-image: url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=1000&auto=format&fit=crop');" onclick="openImageModal(this)">
+                        </div>
+                        <div class="package-badge bestseller">BEST SELLER</div>
+                        <div class="package-price-tag">Rp 29,7 Jt</div>
                     </div>
-                    <div class="package-body">
-                        <ul class="package-features">
-                            <li><i class="fas fa-check"></i> Porsi haji reguler</li>
-                            <li><i class="fas fa-check"></i> Pemberangkatan 2025</li>
-                            <li><i class="fas fa-check"></i> Akomodasi sesuai standar</li>
-                            <li><i class="fas fa-check"></i> Pembimbing ibadah</li>
-                            <li><i class="fas fa-check"></i> Handling lengkap</li>
-                            <li><i class="fas fa-check"></i> Perlengkapan haji</li>
-                        </ul>
-                        <a href="https://wa.me/6281212121211?text=Saya tertarik dengan Paket Haji Reguler" class="btn-primary" style="width: 100%; justify-content: center;">
-                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    <div class="package-content">
+                        <h3 class="package-title">Umroh Plus Premium</h3>
+                        <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya tertarik dengan Paket Umroh Plus Premium Rp 29,7 Jt. Mohon info lengkapnya" class="package-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            Chat Umroh Premium
                         </a>
                     </div>
                 </div>
 
                 <div class="package-card">
-                    <div class="package-header">
-                        <h3>Paket Umroh Premium</h3>
-                        <div class="package-price">Rp 28.5jt</div>
+                    <div class="package-image-container">
+                        <div class="package-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1000&auto=format&fit=crop');" onclick="openImageModal(this)">
+                        </div>
+                        <div class="package-badge limited">TERBATAS</div>
+                        <div class="package-price-tag">Rp 65 Jt</div>
                     </div>
-                    <div class="package-body">
-                        <ul class="package-features">
-                            <li><i class="fas fa-check"></i> Tiket PP Jakarta - Jeddah</li>
-                            <li><i class="fas fa-check"></i> Hotel bintang 5 (Madinah & Makkah)</li>
-                            <li><i class="fas fa-check"></i> Transportasi bus VIP</li>
-                            <li><i class="fas fa-check"></i> Makan buffet 3x sehari</li>
-                            <li><i class="fas fa-check"></i> Pembimbing ibadah expert</li>
-                            <li><i class="fas fa-check"></i> Ziarah lengkap</li>
-                        </ul>
-                        <a href="https://wa.me/6281212121211?text=Saya tertarik dengan Paket Umroh Premium" class="btn-primary" style="width: 100%; justify-content: center;">
-                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    <div class="package-content">
+                        <h3 class="package-title">Haji Reguler 2025</h3>
+                        <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya tertarik dengan Paket Haji Reguler 2025 Rp 65 Jt. Mohon info lengkapnya" class="package-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            Chat Haji Reguler
                         </a>
                     </div>
                 </div>
 
-                
+                <div class="package-card">
+                    <div class="package-image-container">
+                        <div class="package-image" style="background-image: url('https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?q=80&w=1000&auto=format&fit=crop');" onclick="openImageModal(this)">
+                        </div>
+                        <div class="package-badge vip">VIP</div>
+                        <div class="package-price-tag">Rp 35,9 Jt</div>
+                    </div>
+                    <div class="package-content">
+                        <h3 class="package-title">Umroh VIP Exclusive</h3>
+                        <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya tertarik dengan Paket Umroh VIP Exclusive Rp 35,9 Jt. Mohon info lengkapnya" class="package-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            Chat Umroh VIP
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeImageModal()">&times;</span>
+            <img id="modalImage" src="" style="width: 100%; border-radius: 15px;">
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galeri Perjalanan</h2>
+                <p>Saksikan momen-momen berharga perjalanan spiritual jamaah Ramada Tour</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openGalleryModal(this, 'Masjidil Haram', 'Suasana ibadah umroh di Masjidil Haram yang megah dan khusyuk')">
+                    <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1564769662533-4f00a87b4056?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="gallery-zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Masjidil Haram</h4>
+                        <p>Suasana ibadah umroh di Masjidil Haram yang megah dan khusyuk</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openGalleryModal(this, 'Ka\'bah Suci', 'Pemandangan Ka\'bah yang mempesona saat jamaah melakukan thawaf')">
+                    <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="gallery-zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Ka'bah Suci</h4>
+                        <p>Pemandangan Ka'bah yang mempesona saat jamaah melakukan thawaf</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openGalleryModal(this, 'Masjid Nabawi', 'Masjid Nabawi di Madinah dengan kubah hijaunya yang terkenal')">
+                    <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="gallery-zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Masjid Nabawi</h4>
+                        <p>Masjid Nabawi di Madinah dengan kubah hijaunya yang terkenal</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openGalleryModal(this, 'Jabal Rahmah', 'Jamaah berkunjung ke Jabal Rahmah di Padang Arafah')">
+                    <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="gallery-zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Jabal Rahmah</h4>
+                        <p>Jamaah berkunjung ke Jabal Rahmah di Padang Arafah</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openGalleryModal(this, 'Raudhah Sharif', 'Suasana khusyuk di Raudhah, taman surga di Masjid Nabawi')">
+                    <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1589827577276-65d717348780?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="gallery-zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Raudhah Sharif</h4>
+                        <p>Suasana khusyuk di Raudhah, taman surga di Masjid Nabawi</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openGalleryModal(this, 'Safa dan Marwa', 'Jamaah melakukan sa\'i antara bukit Safa dan Marwa')">
+                    <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1590736969955-71cc94901144?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="gallery-zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Safa dan Marwa</h4>
+                        <p>Jamaah melakukan sa'i antara bukit Safa dan Marwa</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openGalleryModal(this, 'Maqam Ibrahim', 'Tempat berdiri Nabi Ibrahim AS saat membangun Ka\'bah')">
+                    <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="gallery-zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Maqam Ibrahim</h4>
+                        <p>Tempat berdiri Nabi Ibrahim AS saat membangun Ka'bah</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openGalleryModal(this, 'Zam-zam Well', 'Sumur Zamzam yang memberkahi para jamaah haji dan umroh')">
+                    <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1542816417-0983c9c9ad53?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="gallery-zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Zam-zam Well</h4>
+                        <p>Sumur Zamzam yang memberkahi para jamaah haji dan umroh</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Partners Section -->
+    <!-- Enhanced Image Modal for Gallery -->
+    <div id="galleryModal" class="image-modal" onclick="closeGalleryModal()">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeGalleryModal()">&times;</span>
+            <img id="galleryModalImage" src="" style="width: 100%; border-radius: 15px;">
+            <div class="modal-info">
+                <h4 id="galleryModalTitle"></h4>
+                <p id="galleryModalDescription"></p>
+            </div>
+        </div>
+    </div>
     <section class="partners">
         <div class="container">
             <div class="section-title">
@@ -773,18 +1423,42 @@
             </div>
             <div class="partners-slider">
                 <div class="partners-track">
-                    <div class="partner-logo">Saudi Airlines</div>
-                    <div class="partner-logo">Garuda Indonesia</div>
-                    <div class="partner-logo">Lion Air</div>
-                    <div class="partner-logo">Bank Mandiri</div>
-                    <div class="partner-logo">Bank BRI</div>
-                    <div class="partner-logo">Bank BCA</div>
-                    <div class="partner-logo">Hilton Hotels</div>
-                    <div class="partner-logo">Marriott</div>
-                    <div class="partner-logo">Hyatt Hotels</div>
-                    <div class="partner-logo">Saudi Airlines</div>
-                    <div class="partner-logo">Garuda Indonesia</div>
-                    <div class="partner-logo">Lion Air</div>
+                    <div class="partner-logo">
+                        <img src="https://bb71d2eac085c69b0.nos.wjv-1.neo.id/1638869882-890430/16585571206334-OVpSvQfW6iC7XbxhTK2jMo9gp7sgLSE3OpZl3TQo.png" alt="Partner Logo">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://bb71d2eac085c69b0.nos.wjv-1.neo.id/1638869882-890430/16585571206334-OVpSvQfW6iC7XbxhTK2jMo9gp7sgLSE3OpZl3TQo.png" alt="Partner Logo">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://bb71d2eac085c69b0.nos.wjv-1.neo.id/1638869882-890430/16585571206334-OVpSvQfW6iC7XbxhTK2jMo9gp7sgLSE3OpZl3TQo.png" alt="Partner Logo">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://bb71d2eac085c69b0.nos.wjv-1.neo.id/1638869882-890430/16585571206334-OVpSvQfW6iC7XbxhTK2jMo9gp7sgLSE3OpZl3TQo.png" alt="Partner Logo">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://bb71d2eac085c69b0.nos.wjv-1.neo.id/1638869882-890430/16585571206334-OVpSvQfW6iC7XbxhTK2jMo9gp7sgLSE3OpZl3TQo.png" alt="Partner Logo">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://bb71d2eac085c69b0.nos.wjv-1.neo.id/1638869882-890430/16585571206334-OVpSvQfW6iC7XbxhTK2jMo9gp7sgLSE3OpZl3TQo.png" alt="Partner Logo">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://bb71d2eac085c69b0.nos.wjv-1.neo.id/1638869882-890430/16585571206334-OVpSvQfW6iC7XbxhTK2jMo9gp7sgLSE3OpZl3TQo.png" alt="Partner Logo">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://bb71d2eac085c69b0.nos.wjv-1.neo.id/1638869882-890430/16585571206334-OVpSvQfW6iC7XbxhTK2jMo9gp7sgLSE3OpZl3TQo.png" alt="Partner Logo">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://bb71d2eac085c69b0.nos.wjv-1.neo.id/1638869882-890430/16585571206334-OVpSvQfW6iC7XbxhTK2jMo9gp7sgLSE3OpZl3TQo.png" alt="Partner Logo">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://bb71d2eac085c69b0.nos.wjv-1.neo.id/1638869882-890430/16585571206334-OVpSvQfW6iC7XbxhTK2jMo9gp7sgLSE3OpZl3TQo.png" alt="Partner Logo">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://bb71d2eac085c69b0.nos.wjv-1.neo.id/1638869882-890430/16585571206334-OVpSvQfW6iC7XbxhTK2jMo9gp7sgLSE3OpZl3TQo.png" alt="Partner Logo">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://bb71d2eac085c69b0.nos.wjv-1.neo.id/1638869882-890430/16585571206334-OVpSvQfW6iC7XbxhTK2jMo9gp7sgLSE3OpZl3TQo.png" alt="Partner Logo">
+                    </div>
                 </div>
             </div>
         </div>
@@ -979,7 +1653,7 @@
         }, observerOptions);
 
         // Observe service cards and testimonial cards
-        document.querySelectorAll('.service-card, .testimonial-card').forEach(card => {
+        document.querySelectorAll('.service-card, .testimonial-card, .package-card, .gallery-item').forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -989,6 +1663,56 @@
         // WhatsApp widget click tracking
         document.querySelector('.whatsapp-widget').addEventListener('click', function() {
             console.log('WhatsApp widget clicked');
+        });
+
+        // Enhanced Gallery Modal Functions
+        function openGalleryModal(element, title, description) {
+            const modal = document.getElementById('galleryModal');
+            const modalImg = document.getElementById('galleryModalImage');
+            const modalTitle = document.getElementById('galleryModalTitle');
+            const modalDescription = document.getElementById('galleryModalDescription');
+            
+            const imageElement = element.querySelector('.gallery-image');
+            const bgImage = imageElement.style.backgroundImage;
+            const imageUrl = bgImage.slice(5, -2); // Remove url(" and ")
+            
+            modal.style.display = 'block';
+            modalImg.src = imageUrl;
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGalleryModal() {
+            const modal = document.getElementById('galleryModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Image Modal Functions (for packages)
+        function openImageModal(imageElement) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const bgImage = imageElement.style.backgroundImage;
+            const imageUrl = bgImage.slice(5, -2); // Remove url(" and ")
+            
+            modal.style.display = 'block';
+            modalImg.src = imageUrl;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modals with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImageModal();
+                closeGalleryModal();
+            }
         });
     </script>
 </body>
