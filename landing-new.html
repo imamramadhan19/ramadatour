@@ -157,7 +157,7 @@
 
         .hero p {
             font-size: 1.3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -250,7 +250,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
         }
 
@@ -1231,7 +1231,7 @@
                 <li><a href="#testimonials">Testimoni</a></li>
                 <li><a href="#contact">Kontak</a></li> -->
             </ul>
-            <a href="https://wa.me/6281212121211" class="cta-button">
+            <a href="https://wa.me/6281212121211" class="cta-button" onclick="toggleWhatsAppOptions(event)">
                 <i class="fab fa-whatsapp"></i>
                 Konsultasi Gratis
             </a>
@@ -1241,14 +1241,18 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Wujudkan Impian Haji & Umroh Anda</h1>
-            <p>Bergabunglah dengan ribuan jamaah yang telah mempercayakan perjalanan spiritual mereka kepada Ramada Tour. Dapatkan pengalaman ibadah yang tak terlupakan dengan pelayanan terbaik dan harga terjangkau.</p>
+            <h1>Mau Umroh Pasti, dan ga ribet ?</h1>
+            <p>Pilih Travel yang berizin, Amanah, dan berpengalaman. </p>
+
+            <p>Travel Resmi & Dipercaya Jamaah Ramada Travel. </p>
+
+            <p>Izin PPIU No 1251 Tahun 2021 </p>
             <div class="hero-buttons">
-                <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya ingin konsultasi paket Umroh" class="btn-primary">
+                <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya ingin konsultasi paket Umroh" class="btn-primary" onclick="toggleWhatsAppOptions(event)">
                     <i class="fas fa-phone"></i>
                     Konsultasi Umroh
                 </a>
-                <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya ingin informasi paket Haji" class="btn-secondary">
+                <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya ingin informasi paket Haji" class="btn-secondary" onclick="toggleWhatsAppOptions(event)">
                     <i class="fas fa-kaaba"></i>
                     Konsultasi Haji
                 </a>
@@ -1273,7 +1277,7 @@
                     </div>
                     <div class="package-content">
                         <h3 class="package-title">Umroh Promo Ekonomis</h3>
-                        <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya tertarik dengan Paket Umroh Promo Ekonomis Rp 24,9 Jt. Mohon info lengkapnya" class="package-btn">
+                        <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya tertarik dengan Paket Umroh Promo Ekonomis Rp 24,9 Jt. Mohon info lengkapnya" class="package-btn" onclick="toggleWhatsAppOptions(event)">
                             <i class="fab fa-whatsapp"></i>
                             Chat Umroh Promo
                         </a>
@@ -1343,45 +1347,59 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <!-- <h3>Terpercaya & Berizin</h3> -->
+                    <p>Travel berizin resmi dari Kemenag RI dengan No 1251 Tahun 2021 </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
                         <i class="fas fa-certificate"></i>
                     </div>
-                    <h3>Terpercaya & Berizin</h3>
-                    <p>Terdaftar resmi di Kementerian Agama dengan izin lengkap untuk menyelenggarakan perjalanan Haji dan Umroh.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-hotel"></i>
-                    </div>
-                    <h3>Hotel Bintang 5</h3>
-                    <p>Penginapan mewah dan nyaman di lokasi strategis dekat Masjidil Haram dan Masjid Nabawi.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3>Muthowwif Berpengalaman</h3>
-                    <p>Dipandu oleh muthowwif profesional yang berpengalaman lebih dari 10 tahun.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-plane"></i>
-                    </div>
-                    <h3>Maskapai Terpercaya</h3>
-                    <p>Menggunakan maskapai penerbangan internasional terbaik untuk kenyamanan perjalanan Anda.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3>Katering Bergizi</h3>
-                    <p>Makanan bergizi tinggi yang disesuaikan dengan selera Indonesia.</p>
+                    <!-- <h3>Hotel Bintang 5</h3> -->
+                    <p>Ramada merupakan biro perjalanan umroh terbaik dengan predikat Akreditasi " A (Sangat Baik) " </p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-headset"></i>
                     </div>
-                    <h3>Pelayanan 24/7</h3>
-                    <p>Tim customer service siap membantu Anda kapan saja selama perjalanan.</p>
+                    <!-- <h3>Muthowwif Berpengalaman</h3> -->
+                    <p>Memiliki Tim sendiri yang berkantor di Saudi Arabia .</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <!-- <h3>Maskapai Terpercaya</h3> -->
+                    <p>Kantor pusat kami berlokasi di bogor, Jawa Barat .</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <!-- <h3>Katering Bergizi</h3> -->
+                    <p>Seluruh Paket Umroh sudah jelas dan pasti tanggal berangkat beserta nama maskapainya.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <!-- <h3>Pelayanan 24/7</h3> -->
+                    <p>Hotel dengan fasilitas terbaik dan jarak dekat dengan masjidil haram/masjid nabawi. </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <!-- <h3>Katering Bergizi</h3> -->
+                    <p>Pembimbing ibadah (muthawif/tour leader) sudah tersertivikasi BNSP dan berpengalaman dalam pelayanan jamaah </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <!-- <h3>Pelayanan 24/7</h3> -->
+                    <p>Memiliki rasa kekeluargaan sehingga perjalanan ibadah umroh berkesan dan menyenangkan.</p>
                 </div>
             </div>
         </div>
@@ -1623,7 +1641,7 @@
             <h2>Siap Memulai Perjalanan Spiritual Anda?</h2>
             <p>Jangan tunda lagi impian Anda untuk beribadah Haji dan Umroh. Hubungi kami sekarang untuk mendapatkan konsultasi gratis dan penawaran terbaik.</p>
             <div class="contact-buttons">
-                <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya ingin informasi lengkap paket Umroh 2025" class="btn-primary">
+                <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya ingin informasi lengkap paket Umroh 2025" class="btn-primary" onclick="toggleWhatsAppOptions(event)">
                     <i class="fab fa-whatsapp"></i>
                     Chat WhatsApp Sekarang
                 </a>
@@ -1691,10 +1709,10 @@
                 </div>
                 <div class="footer-section">
                     <h3>Layanan Kami</h3>
-                    <p><a href="https://wa.me/6281212121211">Paket Umroh Regular</a></p>
-                    <p><a href="https://wa.me/6281212121211">Paket Umroh Plus</a></p>
-                    <p><a href="https://wa.me/6281212121211">Paket Haji Regular</a></p>
-                    <p><a href="https://wa.me/6281212121211">Paket Haji Plus</a></p>
+                    <p><a href="https://wa.me/6281212121211" onclick="toggleWhatsAppOptions(event)">Paket Umroh Regular</a></p>
+                    <p><a href="https://wa.me/6281212121211" onclick="toggleWhatsAppOptions(event)">Paket Umroh Plus</a></p>
+                    <p><a href="https://wa.me/6281212121211" onclick="toggleWhatsAppOptions(event)">Paket Haji Regular</a></p>
+                    <p><a href="https://wa.me/6281212121211" onclick="toggleWhatsAppOptions(event)">Paket Haji Plus</a></p>
                 </div>
                 <div class="footer-section">
                     <h3>Hubungi Kami</h3>
