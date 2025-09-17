@@ -551,8 +551,8 @@
             font-size: 1rem;
         }
 
-        /* Gallery Section */
-        .gallery {
+       /* Gallery Section */
+       .gallery {
             padding: 120px 0;
             background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
             position: relative;
@@ -706,7 +706,7 @@
             transform: scale(1);
         }
 
-        /* Image Zoom Modal */
+        /* Responsive Image Modal */
         .image-modal {
             display: none;
             position: fixed;
@@ -718,6 +718,7 @@
             background-color: rgba(0,0,0,0.95);
             backdrop-filter: blur(10px);
             animation: fadeIn 0.3s ease;
+            padding: 20px;
         }
 
         @keyframes fadeIn {
@@ -729,15 +730,15 @@
             position: relative;
             margin: auto;
             display: block;
-            width: 90%;
-            max-width: 1000px;
-            max-height: 85%;
+            width: 100%;
+            max-width: 90vw;
+            max-height: 90vh;
             top: 50%;
-            left: 15%;
             transform: translateY(-50%);
             border-radius: 15px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
             animation: zoomIn 0.3s ease;
+            object-fit: contain;
         }
 
         @keyframes zoomIn {
@@ -753,7 +754,7 @@
 
         .modal-close {
             position: absolute;
-            top: -50px;
+            top: -60px;
             right: 0;
             color: white;
             font-size: 2.5rem;
@@ -778,11 +779,12 @@
 
         .modal-info {
             position: absolute;
-            bottom: -60px;
+            bottom: -80px;
             left: 0;
             right: 0;
             color: white;
             text-align: center;
+            padding: 0 20px;
         }
 
         .modal-info h4 {
@@ -793,49 +795,8 @@
 
         .modal-info p {
             opacity: 0.8;
-        }
-
-        /* Gallery Responsive */
-        @media (max-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-            
-            .gallery .section-title h2 {
-                font-size: 2.2rem;
-            }
-
-            .modal-content {
-                width: 95%;
-                max-height: 80%;
-            }
-
-            .modal-close {
-                top: -40px;
-                width: 40px;
-                height: 40px;
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .gallery-overlay {
-                padding: 20px 15px 15px;
-            }
-
-            .gallery-overlay h4 {
-                font-size: 1rem;
-            }
-
-            .gallery-overlay p {
-                font-size: 0.8rem;
-            }
+            font-size: 1rem;
+            line-height: 1.4;
         }
 
         /* Partners Section */
@@ -1295,60 +1256,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Mengapa Memilih Ramada Tour?</h2>
-                <p>Kami berkomitmen memberikan pelayanan terbaik untuk perjalanan spiritual Anda</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3>Terpercaya & Berizin</h3>
-                    <p>Terdaftar resmi di Kementerian Agama dengan izin lengkap untuk menyelenggarakan perjalanan Haji dan Umroh.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-hotel"></i>
-                    </div>
-                    <h3>Hotel Bintang 5</h3>
-                    <p>Penginapan mewah dan nyaman di lokasi strategis dekat Masjidil Haram dan Masjid Nabawi.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3>Muthowwif Berpengalaman</h3>
-                    <p>Dipandu oleh muthowwif profesional yang berpengalaman lebih dari 10 tahun.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-plane"></i>
-                    </div>
-                    <h3>Maskapai Terpercaya</h3>
-                    <p>Menggunakan maskapai penerbangan internasional terbaik untuk kenyamanan perjalanan Anda.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3>Katering Bergizi</h3>
-                    <p>Makanan bergizi tinggi yang disesuaikan dengan selera Indonesia.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>Pelayanan 24/7</h3>
-                    <p>Tim customer service siap membantu Anda kapan saja selama perjalanan.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Enhanced Packages Section - 4 Grid Layout -->
     <section id="paket" class="packages">
         <div class="container">
@@ -1425,6 +1332,61 @@
         </div>
     </section>
 
+
+      <!-- Services Section -->
+      <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mengapa Memilih Ramada Tour?</h2>
+                <p>Kami berkomitmen memberikan pelayanan terbaik untuk perjalanan spiritual Anda</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Terpercaya & Berizin</h3>
+                    <p>Terdaftar resmi di Kementerian Agama dengan izin lengkap untuk menyelenggarakan perjalanan Haji dan Umroh.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3>Hotel Bintang 5</h3>
+                    <p>Penginapan mewah dan nyaman di lokasi strategis dekat Masjidil Haram dan Masjid Nabawi.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Muthowwif Berpengalaman</h3>
+                    <p>Dipandu oleh muthowwif profesional yang berpengalaman lebih dari 10 tahun.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Maskapai Terpercaya</h3>
+                    <p>Menggunakan maskapai penerbangan internasional terbaik untuk kenyamanan perjalanan Anda.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Katering Bergizi</h3>
+                    <p>Makanan bergizi tinggi yang disesuaikan dengan selera Indonesia.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Pelayanan 24/7</h3>
+                    <p>Tim customer service siap membantu Anda kapan saja selama perjalanan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Image Modal -->
     <div id="imageModal" class="image-modal" onclick="closeImageModal()">
         <div class="modal-content">
@@ -1433,7 +1395,7 @@
         </div>
     </div>
 
-    <!-- Gallery Section -->
+   <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <div class="container">
             <div class="section-title">
@@ -1474,17 +1436,6 @@
                     </div>
                 </div>
 
-                <div class="gallery-item" onclick="openGalleryModal(this, 'Jabal Rahmah', 'Jamaah berkunjung ke Jabal Rahmah di Padang Arafah')">
-                    <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?q=80&w=1000&auto=format&fit=crop');"></div>
-                    <div class="gallery-zoom-icon">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>Jabal Rahmah</h4>
-                        <p>Jamaah berkunjung ke Jabal Rahmah di Padang Arafah</p>
-                    </div>
-                </div>
-
                 <div class="gallery-item" onclick="openGalleryModal(this, 'Raudhah Sharif', 'Suasana khusyuk di Raudhah, taman surga di Masjid Nabawi')">
                     <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1589827577276-65d717348780?q=80&w=1000&auto=format&fit=crop');"></div>
                     <div class="gallery-zoom-icon">
@@ -1496,16 +1447,6 @@
                     </div>
                 </div>
 
-                <div class="gallery-item" onclick="openGalleryModal(this, 'Safa dan Marwa', 'Jamaah melakukan sa\'i antara bukit Safa dan Marwa')">
-                    <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1590736969955-71cc94901144?q=80&w=1000&auto=format&fit=crop');"></div>
-                    <div class="gallery-zoom-icon">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>Safa dan Marwa</h4>
-                        <p>Jamaah melakukan sa'i antara bukit Safa dan Marwa</p>
-                    </div>
-                </div>
 
                 <div class="gallery-item" onclick="openGalleryModal(this, 'Maqam Ibrahim', 'Tempat berdiri Nabi Ibrahim AS saat membangun Ka\'bah')">
                     <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?q=80&w=1000&auto=format&fit=crop');"></div>
@@ -1536,7 +1477,7 @@
     <div id="galleryModal" class="image-modal" onclick="closeGalleryModal()">
         <div class="modal-content">
             <span class="modal-close" onclick="closeGalleryModal()">&times;</span>
-            <img id="galleryModalImage" src="" style="width: 100%; border-radius: 15px;">
+            <img id="galleryModalImage" src="" style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px;">
             <div class="modal-info">
                 <h4 id="galleryModalTitle"></h4>
                 <p id="galleryModalDescription"></p>
