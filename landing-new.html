@@ -289,7 +289,7 @@
 
         /* Enhanced Packages Section - 4 Grid Layout */
         .packages {
-            padding: 120px 0;
+            padding: 50px 0;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             position: relative;
             overflow: hidden;
@@ -719,6 +719,7 @@
             backdrop-filter: blur(10px);
             animation: fadeIn 0.3s ease;
             padding: 20px;
+            box-sizing: border-box;
         }
 
         @keyframes fadeIn {
@@ -729,12 +730,20 @@
         .modal-content {
             position: relative;
             margin: auto;
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
+            height: 100%;
             max-width: 90vw;
             max-height: 90vh;
-            top: 50%;
-            transform: translateY(-50%);
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
             border-radius: 15px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
             animation: zoomIn 0.3s ease;
@@ -744,37 +753,88 @@
         @keyframes zoomIn {
             from { 
                 opacity: 0;
-                transform: translateY(-50%) scale(0.8);
+                transform: scale(0.8);
             }
             to { 
                 opacity: 1;
-                transform: translateY(-50%) scale(1);
+                transform: scale(1);
             }
         }
 
         .modal-close {
             position: absolute;
-            top: -60px;
-            right: 0;
+            top: 10px;
+            right: 10px;
             color: white;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: bold;
             cursor: pointer;
-            background: rgba(221, 185, 42, 0.2);
-            width: 50px;
-            height: 50px;
+            background: rgba(221, 185, 42, 0.8);
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            z-index: 10001;
         }
 
         .modal-close:hover {
-            background: rgba(221, 185, 42, 0.4);
+            background: rgba(221, 185, 42, 1);
             transform: scale(1.1);
-            color: #ddb92a;
+            color: #4b181f;
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            .image-modal {
+                padding: 10px;
+            }
+            
+            .modal-content {
+                max-width: 95vw;
+                max-height: 95vh;
+            }
+            
+            .modal-close {
+                top: 5px;
+                right: 5px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-modal {
+                padding: 5px;
+            }
+            
+            .modal-content {
+                max-width: 98vw;
+                max-height: 98vh;
+            }
+            
+            .modal-close {
+                width: 35px;
+                height: 35px;
+                font-size: 1.3rem;
+            }
+            
+            .modal-content img {
+                border-radius: 10px;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .modal-close {
+                width: 50px;
+                height: 50px;
+                font-size: 1.8rem;
+            }
         }
 
         .modal-info {
@@ -1337,6 +1397,83 @@
     </section>
 
 
+      <!-- Enhanced Packages Section - 4 Grid Layout -->
+      <section id="paket" class="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Package LA</h2>
+                <p>Pilih paket perjalanan spiritual terbaik dengan harga terjangkau dan fasilitas premium</p>
+            </div>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-image-container">
+                        <div class="package-image" style="background-image: url('https://i.ibb.co.com/BM9M4CJ/Whats-App-Image-2025-08-09-at-13-45-50.jpg');" onclick="openImageModal(this)">
+                        </div>
+                        <div class="package-badge promo">PROMO</div>
+                        <div class="package-price-tag">Rp 24,9 Jt</div>
+                    </div>
+                    <div class="package-content">
+                        <h3 class="package-title">Umroh Promo Ekonomis</h3>
+                        <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya tertarik dengan Paket Umroh Promo Ekonomis Rp 24,9 Jt. Mohon info lengkapnya" class="package-btn" onclick="toggleWhatsAppOptions(event)">
+                            <i class="fab fa-whatsapp"></i>
+                            Chat Umroh Promo
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-image-container">
+                        <div class="package-image" style="background-image: url('https://i.ibb.co.com/BM9M4CJ/Whats-App-Image-2025-08-09-at-13-45-50.jpg');" onclick="openImageModal(this)">
+                        </div>
+                        <div class="package-badge bestseller">BEST SELLER</div>
+                        <div class="package-price-tag">Rp 29,7 Jt</div>
+                    </div>
+                    <div class="package-content">
+                        <h3 class="package-title">Umroh Plus Premium</h3>
+                        <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya tertarik dengan Paket Umroh Plus Premium Rp 29,7 Jt. Mohon info lengkapnya" class="package-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            Chat Umroh Premium
+                        </a>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-image-container">
+                        <div class="package-image" style="background-image: url('https://i.ibb.co.com/BM9M4CJ/Whats-App-Image-2025-08-09-at-13-45-50.jpg');" onclick="openImageModal(this)">
+                        </div>
+                        <div class="package-badge limited">TERBATAS</div>
+                        <div class="package-price-tag">Rp 65 Jt</div>
+                    </div>
+                    <div class="package-content">
+                        <h3 class="package-title">Haji Reguler 2025</h3>
+                        <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya tertarik dengan Paket Haji Reguler 2025 Rp 65 Jt. Mohon info lengkapnya" class="package-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            Chat Haji Reguler
+                        </a>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-image-container">
+                        <div class="package-image" style="background-image: url('https://i.ibb.co.com/BM9M4CJ/Whats-App-Image-2025-08-09-at-13-45-50.jpg');" onclick="openImageModal(this)">
+                        </div>
+                        <div class="package-badge vip">VIP</div>
+                        <div class="package-price-tag">Rp 35,9 Jt</div>
+                    </div>
+                    <div class="package-content">
+                        <h3 class="package-title">Umroh VIP Exclusive</h3>
+                        <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya tertarik dengan Paket Umroh VIP Exclusive Rp 35,9 Jt. Mohon info lengkapnya" class="package-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            Chat Umroh VIP
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+
       <!-- Services Section -->
       <section id="services" class="services">
         <div class="container">
@@ -1409,7 +1546,7 @@
     <div id="imageModal" class="image-modal" onclick="closeImageModal()">
         <div class="modal-content">
             <span class="modal-close" onclick="closeImageModal()">&times;</span>
-            <img id="modalImage" src="" style="width: 45%; height: 100%; border-radius: 15px;">
+            <img id="modalImage" src="" >
         </div>
     </div>
 
