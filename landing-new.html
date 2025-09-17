@@ -974,15 +974,15 @@
             flex-wrap: wrap;
         }
 
-        /* WhatsApp Widget */
-        .whatsapp-widget {
+          /* Enhanced WhatsApp Widget with Multi-Contact Options */
+          .whatsapp-widget {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
         }
-        
-        .whatsapp-btn {
+
+        .whatsapp-main-btn {
             width: 60px;
             height: 60px;
             background: #25d366;
@@ -995,6 +995,133 @@
             text-decoration: none;
             box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
             animation: bounce 2s infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-main-btn:hover {
+            transform: scale(1.1);
+            animation: none;
+        }
+
+        .whatsapp-options {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 20px;
+            min-width: 280px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            border: 1px solid #e0e0e0;
+        }
+
+        .whatsapp-options.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .whatsapp-options::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid white;
+        }
+
+        .whatsapp-options h4 {
+            color: #4b181f;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .contact-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-option:hover {
+            background: #25d366;
+            color: white;
+            border-color: #25d366;
+            transform: translateX(5px);
+        }
+
+        .contact-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-option:hover .contact-icon {
+            background: white;
+            color: #25d366;
+        }
+
+        .contact-info h5 {
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+
+        .contact-info p {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .whatsapp-close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #999;
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease;
+        }
+
+        .whatsapp-close:hover {
+            color: #666;
         }
 
         @keyframes bounce {
@@ -1570,9 +1697,44 @@
    
     <!-- WhatsApp Widget -->
     <div class="whatsapp-widget">
-        <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya ingin bertanya tentang paket Haji dan Umroh" class="whatsapp-btn">
+        <div class="whatsapp-main-btn" onclick="toggleWhatsAppOptions(event)">
             <i class="fab fa-whatsapp"></i>
-        </a>
+        </div>
+        
+        <div class="whatsapp-options" id="whatsappOptions">
+            <button class="whatsapp-close" onclick="closeWhatsAppOptions()">&times;</button>
+            <h4>Pilih Konsultasi</h4>
+            
+            <a href="https://wa.me/6281212121211?text=Assalamualaikum, saya ingin konsultasi paket Umroh. Mohon info lengkapnya" class="contact-option">
+                <div class="contact-icon">
+                    <i class="fas fa-kaaba"></i>
+                </div>
+                <div class="contact-info">
+                    <h5>Konsultan Umroh</h5>
+                    <p>Info paket & harga umroh</p>
+                </div>
+            </a>
+            
+            <a href="https://wa.me/6281212121212?text=Assalamualaikum, saya ingin konsultasi paket Haji. Mohon info lengkapnya" class="contact-option">
+                <div class="contact-icon">
+                    <i class="fas fa-mosque"></i>
+                </div>
+                <div class="contact-info">
+                    <h5>Konsultan Haji</h5>
+                    <p>Info paket & harga haji</p>
+                </div>
+            </a>
+            
+            <a href="https://wa.me/6281212121213?text=Assalamualaikum, saya butuh bantuan customer service" class="contact-option">
+                <div class="contact-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div class="contact-info">
+                    <h5>Customer Service</h5>
+                    <p>Bantuan umum & keluhan</p>
+                </div>
+            </a>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -1661,9 +1823,27 @@
             observer.observe(card);
         });
 
-        // WhatsApp widget click tracking
-        document.querySelector('.whatsapp-widget').addEventListener('click', function() {
-            console.log('WhatsApp widget clicked');
+       // Enhanced WhatsApp Widget Functions
+       function toggleWhatsAppOptions(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const options = document.getElementById('whatsappOptions');
+            options.classList.toggle('show');
+        }
+
+        function closeWhatsAppOptions() {
+            const options = document.getElementById('whatsappOptions');
+            options.classList.remove('show');
+        }
+
+        // Close WhatsApp options when clicking outside
+        document.addEventListener('click', function(event) {
+            const widget = document.querySelector('.whatsapp-widget');
+            const options = document.getElementById('whatsappOptions');
+            
+            if (!widget.contains(event.target) && options.classList.contains('show')) {
+                options.classList.remove('show');
+            }
         });
 
         // Enhanced Gallery Modal Functions
